@@ -13,6 +13,8 @@ battery
 bluetooth
 bnep
 bpf_preload
+bridge
+br_netfilter
 btbcm
 btintel
 btmtk
@@ -85,8 +87,10 @@ ledtrig_audio
 libarc4
 libchacha
 libchacha20poly1305
+libcrc32c
 libcurve25519_generic
 libps2
+llc
 lpc_ich
 lzo_rle
 mac80211
@@ -101,14 +105,17 @@ mmc_core
 mousedev
 mxm_wmi
 nf_conntrack
+nf_conntrack_netlink
 nf_defrag_ipv4
 nf_defrag_ipv6
 nf_nat
+nfnetlink
 nf_tables
 nft_chain_nat
 nft_compat
-nouveau
+nft_counter
 nvidiafb
+overlay
 pcspkr
 pkcs8_key_parser
 poly1305_x86_64
@@ -142,6 +149,7 @@ snd_timer
 soundcore
 sparse_keymap
 sr_mod
+stp
 syscopyarea
 sysfillrect
 sysimgblt
@@ -166,6 +174,7 @@ wmi
 wmi_bmof
 x86_pkg_temp_thermal
 x_tables
+xt_addrtype
 xt_CHECKSUM
 xt_conntrack
 xt_MASQUERADE
