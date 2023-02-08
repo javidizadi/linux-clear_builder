@@ -1,6 +1,5 @@
 ac
 acer_wmi
-acpi_call
 agpgart
 at24
 ath
@@ -99,6 +98,7 @@ nf_tables
 nft_chain_nat
 nft_compat
 nft_counter
+nouveau
 nvidiafb
 overlay
 pkcs8_key_parser
