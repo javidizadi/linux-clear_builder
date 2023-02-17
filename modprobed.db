@@ -101,6 +101,7 @@ nft_counter
 nouveau
 nvidiafb
 overlay
+pcspkr
 pkcs8_key_parser
 poly1305_x86_64
 polyval_clmulni
@@ -141,6 +142,7 @@ usbnet
 usbserial
 usb_storage
 uvcvideo
+veth
 vfat
 vgastate
 videobuf2_common
