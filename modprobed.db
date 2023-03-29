@@ -45,6 +45,7 @@ drm_ttm_helper
 ecc
 ecdh_generic
 eeprom
+exfat
 ext4
 fat
 fb_ddc
