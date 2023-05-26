@@ -1,5 +1,5 @@
 #!/bin/bash
-commit_hash="fe6603fb7b5b8bdd40da8474ade0f82dce95a506"
+commit_hash="81920786b266a8422ef06d5a6a0166a4b2559a19"
 repo=`printenv REPO`
 cd /home/linux-clear_builder
 git clone https://aur.archlinux.org/linux-clear.git &&
