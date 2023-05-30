@@ -10,7 +10,7 @@ echo "Compiling kernel..."
 env MAKEFLAGS="-s -j$(nproc)" _subarch=22 makepkg --skippgpcheck &&
 echo "Logining in to GitHub..."
 printenv GITHUB_KEY | gh auth login --with-token
-version=`git log --format=%B -n 1 $commit_hash | awk -F '-' 'NR==1{print "v"$1}'`
+version="`git log --format=%B -n 1 $commit_hash | awk -F '-' 'NR==1{print "v"$1}'`-full-build"
 gh release view "$version" --repo "$repo"
 tag_exists=$?
 if test $tag_exists -eq 0; then
