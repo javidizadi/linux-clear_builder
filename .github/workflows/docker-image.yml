@@ -16,7 +16,6 @@ jobs:
         run: mkdir cache
 
       - name: restore ccache builds
-        continue-on-error: true
         uses: actions/cache/restore@v3
         with: 
           key: ccache-test-cache
@@ -24,6 +23,9 @@ jobs:
 
       - name: run Docker image
         run: docker run -i -e GITHUB_KEY=${{ secrets.GITHUB_TOKEN }} -e REPO=${{ github.repository }} -v cache:/home/builder/.cache/ccache linux-clear_builder:latest
+
+      - name: size of cache
+        run: df -sh ./cache
 
       - name: cache ccache builds
         uses: actions/cache@v3
