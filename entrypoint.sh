@@ -1,4 +1,5 @@
 #!/bin/bash
+export PATH="/usr/lib/ccache/bin:$PATH"
 commit_hash="caa5df2fb6a817f85c9ec94c5af8d2d253a8fecd"
 repo=`printenv REPO`
 cd /home/linux-clear_builder
@@ -8,6 +9,8 @@ echo "Checkout specified commit..."
 git checkout $commit_hash &&
 echo "Compiling kernel..."
 env MAKEFLAGS="-s -j$(nproc)" _localmodcfg=y _subarch=22 makepkg --skippgpcheck &&
+cache_size = $(du -sh $HOME/.cache/ccache)
+echo "Your cache size: ${cache_size}"
 echo "Logining in to GitHub..."
 printenv GITHUB_KEY | gh auth login --with-token
 version=`git log --format=%B -n 1 $commit_hash | awk -F '-' 'NR==1{print "v"$1}'`
