@@ -3,7 +3,7 @@ echo "building with ccache"
 export PATH="/usr/lib/ccache/bin:$PATH"
 commit_hash="caa5df2fb6a817f85c9ec94c5af8d2d253a8fecd"
 repo=`printenv REPO`
-cd /home/linux-clear_builder
+cd /home/builder
 git clone https://aur.archlinux.org/linux-clear.git &&
 cd linux-clear
 echo "Checkout specified commit..."
