@@ -10,7 +10,7 @@ echo "Checkout specified commit..."
 git checkout $commit_hash &&
 echo "Compiling kernel..."
 env MAKEFLAGS="-s -j$(nproc)" _localmodcfg=y _subarch=22 makepkg --skippgpcheck &&
-cache_size = $(du -sh $HOME/.cache/ccache)
+cache_size=$(du -sh $HOME/.cache/ccache)
 echo "Your cache size: ${cache_size}"
 echo "Logining in to GitHub..."
 printenv GITHUB_KEY | gh auth login --with-token
