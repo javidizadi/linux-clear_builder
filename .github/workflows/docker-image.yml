@@ -25,7 +25,7 @@ jobs:
         run: docker run -i -e GITHUB_KEY=${{ secrets.GITHUB_TOKEN }} -e REPO=${{ github.repository }} -v cache:/home/builder/.cache/ccache linux-clear_builder:latest
 
       - name: size of cache
-        run: df -sh ./cache
+        run: du -sh ./cache
 
       - name: cache ccache builds
         uses: actions/cache@v3
