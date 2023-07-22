@@ -13,7 +13,8 @@ jobs:
         uses: actions/cache/restore@v3
         with: 
           key: docker-builder-cache
-          path: /var/lib/docker
+          path: /var/lib/docker/buildkit/cache
+
 
 
       - uses: actions/checkout@v3
@@ -25,7 +26,7 @@ jobs:
         uses: actions/cache@v3
         with: 
           key: docker-builder-cache
-          path: /var/lib/docker
+          path: /var/lib/docker/buildkit/cache
 
 
       - name: create cache folder
