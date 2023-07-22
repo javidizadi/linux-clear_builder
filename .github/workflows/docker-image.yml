@@ -22,7 +22,7 @@ jobs:
           path: ./cache
 
       - name: run Docker image
-        run: docker run -i -e GITHUB_KEY=${{ secrets.GITHUB_TOKEN }} -e REPO=${{ github.repository }} -v cache:/home/builder/.cache/ccache linux-clear_builder:latest
+        run: docker run -i -e GITHUB_KEY=${{ secrets.GITHUB_TOKEN }} -e REPO=${{ github.repository }} -v "$(pwd)"/cache:/home/builder/.cache/ccache linux-clear_builder:latest
 
       - name: size of cache
         run: du -sh ./cache
