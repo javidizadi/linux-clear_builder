@@ -1,5 +1,8 @@
 #!/bin/bash
 set -e
+echo "hello" > $HOME/.cache/ccache/test
+cat $HOME/.cache/ccache/test
+exit 0
 export PATH="/usr/lib/ccache/bin:$PATH"
 commit_hash="caa5df2fb6a817f85c9ec94c5af8d2d253a8fecd"
 repo=`printenv REPO`
