@@ -9,6 +9,7 @@ echo "Checkout specified commit..."
 git checkout $commit_hash &&
 # ls -ltrha /home/builder/.cache/
 # exit 0
+chown -R builder $HOME/.cache/ccache
 echo "Compiling kernel..."
 env MAKEFLAGS="-s -j$(nproc)" _localmodcfg=y _subarch=22 makepkg --skippgpcheck &&
 cache_size=$(du -sh $HOME/.cache/ccache)
