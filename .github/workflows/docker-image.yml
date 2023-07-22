@@ -17,7 +17,6 @@ jobs:
 
       - name: create cache folder
         run: |
-          setnforce 0
           mkdir cache
           chmod o+w cache
 
