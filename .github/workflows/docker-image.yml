@@ -11,36 +11,22 @@ jobs:
 
       - uses: actions/checkout@v3
       
-      - name: cache docker image builder cache
-        uses: actions/cache@v3
-        with: 
-          key: docker-builder-cache
-          path: /home/builder/.cache/docker
-
-
       - name: Build the Docker image
-        run: docker build . --file Dockerfile --tag linux-clear_builder:latest
+        run: docker build . --file Dockerfile --tag builder:latest
 
 
       - name: create cache folder
         run: mkdir cache
-
-      - name: restore ccache builds
-        uses: actions/cache/restore@v3
-        with: 
-          key: ccache-test-cache
-          path: ./cache
-
-
-      - name: run Docker image
-        run: docker run -i -e GITHUB_KEY=${{ secrets.GITHUB_TOKEN }} -e REPO=${{ github.repository }} -v "$(pwd)"/cache:/home/builder/.cache/ccache linux-clear_builder:latest
-
-      - name: size of cache
-        run: du -sh ./cache
 
       - name: cache ccache builds
         uses: actions/cache@v3
         with:
           key: ccache-test-cache
           path: ./cache
+
+      - name: run Docker image
+        run: docker run -i -e GITHUB_KEY=${{ secrets.GITHUB_TOKEN }} -e REPO=${{ github.repository }} -v "$(pwd)"/cache:/home/builder/.cache/ccache builder:latest
+
+      - name: size of cache
+        run: du -sh ./cache
 
