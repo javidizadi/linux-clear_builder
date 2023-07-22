@@ -1,6 +1,6 @@
 #!/bin/bash
 set -e
-ls -l $HOME/.cache/ccache/test 
+ls -l $HOME/.cache/ccache 
 echo "hello" > $HOME/.cache/ccache/test
 cat $HOME/.cache/ccache/test
 exit 0
