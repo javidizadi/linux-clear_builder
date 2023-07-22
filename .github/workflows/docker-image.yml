@@ -16,9 +16,7 @@ jobs:
 
 
       - name: create cache folder
-        run: |
-          mkdir cache
-          chmod o+w cache
+        run: mkdir cache
 
       - name: cache ccache builds
         uses: actions/cache@v3
