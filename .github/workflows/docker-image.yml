@@ -8,9 +8,25 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+
+      - name: restore docker image builder cache
+        uses: actions/cache/restore@v3
+        with: 
+          key: docker-builder-cache
+          path: /var/lib/docker
+
+
       - uses: actions/checkout@v3
       - name: Build the Docker image
         run: docker build . --file Dockerfile --tag linux-clear_builder:latest
+
+
+      - name: cache docker image builder cache
+        uses: actions/cache/cache@v3
+        with: 
+          key: docker-builder-cache
+          path: /var/lib/docker
+
 
       - name: create cache folder
         run: mkdir cache
@@ -20,6 +36,7 @@ jobs:
         with: 
           key: ccache-test-cache
           path: ./cache
+
 
       - name: run Docker image
         run: docker run -i -e GITHUB_KEY=${{ secrets.GITHUB_TOKEN }} -e REPO=${{ github.repository }} -v "$(pwd)"/cache:/home/builder/.cache/ccache linux-clear_builder:latest
