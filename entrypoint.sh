@@ -8,7 +8,7 @@ git clone https://aur.archlinux.org/linux-clear.git
 cd linux-clear
 echo "Checkout specified commit..."
 git checkout $commit_hash
-chmod -R o+rw ../linux-clear/*
+chmod a+rw ../linux-clear
 echo "Compiling kernel..."
 sudo -u builder env MAKEFLAGS="-s -j$(nproc)" _localmodcfg=y _subarch=22 makepkg --skippgpcheck
 cache_size=$(du -sh $HOME/.cache/ccache)
