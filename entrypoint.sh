@@ -8,10 +8,9 @@ git clone https://aur.archlinux.org/linux-clear.git
 cd linux-clear
 echo "Checkout specified commit..."
 git checkout $commit_hash
-mkdir build
-chown -R builder ./build
+chown -R builder ../linux-clear
 echo "Compiling kernel..."
-sudo -u builder env BUILDDIR=`realpath ./build` MAKEFLAGS="-s -j$(nproc)" _localmodcfg=y _subarch=22 makepkg --skippgpcheck
+sudo -u builder env MAKEFLAGS="-s -j$(nproc)" _localmodcfg=y _subarch=22 makepkg --skippgpcheck
 cache_size=$(du -sh $HOME/.cache/ccache)
 echo "Your cache size: ${cache_size}"
 echo "Logining in to GitHub..."
@@ -29,7 +28,7 @@ else
     echo "Tag does not exist!"
 fi
 echo "Releasing $version binaries into $repo"
-gh release create "$version" ./build/*.pkg.tar.zst --repo "$repo"
+gh release create "$version" ./*.pkg.tar.zst --repo "$repo"
 echo "Released!"
 echo "Loging out from Github..."
 gh auth logout -h github.com
