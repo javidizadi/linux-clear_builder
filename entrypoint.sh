@@ -11,7 +11,7 @@ git checkout $commit_hash
 mkdir build
 chown -R builder ./build
 echo "Compiling kernel..."
-sudo -u builder env BUILDDIR='$(realpath ./build)' MAKEFLAGS="-s -j$(nproc)" _localmodcfg=y _subarch=22 makepkg --skippgpcheck
+sudo -u builder env BUILDDIR=`realpath ./build` MAKEFLAGS="-s -j$(nproc)" _localmodcfg=y _subarch=22 makepkg --skippgpcheck
 cache_size=$(du -sh $HOME/.cache/ccache)
 echo "Your cache size: ${cache_size}"
 echo "Logining in to GitHub..."
